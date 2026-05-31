@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Checker</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input {
+            padding: 10px;
+            width: 250px;
+        }
+
+        button {
+            padding: 10px;
+        }
+
+        .weak {
+            color: red;
+        }
+
+        .medium {
+            color: orange;
+        }
+
+        .strong {
+            color: green;
+        }
+
+        ul {
+            display: inline-block;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>🔐 Password Strength Checker</h2>
+
+    <form method="POST">
+        <input type="text" name="password" placeholder="Enter Password" required>
+        <button type="submit">Check</button>
+    </form>
+
+    {% if result %}
+        <h3 class="
+            {% if result == 'Weak' %}weak
+            {% elif result == 'Medium' %}medium
+            {% else %}strong
+            {% endif %}
+        ">
+            Strength: {{ result }}
+        </h3>
+    {% endif %}
+
+    {% if suggestions %}
+        <h4>Suggestions:</h4>
+        <ul>
+            {% for item in suggestions %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</body>
+</html>
